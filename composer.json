@@ -35,14 +35,16 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "process-timeout": 0
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-root-package-install": [
+        "post-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php -S api:8080 -t src/public"
+            "@php -r \"require 'vendor/autoload.php'; echo \\Illuminate\\Support\\Str::random(32).PHP_EOL;\"",
+            "@php -S api:8080 -t public"
         ]
     }
 }
