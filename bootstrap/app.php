@@ -73,7 +73,8 @@ $app->configure('app');
 */
 
  $app->middleware([
-     App\Http\Middleware\LogMiddleware::class
+     App\Http\Middleware\LogMiddleware::class,
+     //'throttle' => App\Http\Middleware\RateLimits::class
  ]);
 
 // $app->routeMiddleware([

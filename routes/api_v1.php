@@ -36,7 +36,7 @@ Route::name('tracks.')->controller(TrackController::class)->prefix('api/v1/track
 | Vessel endpoints
 |--------------------------------------------------------------------------
  */
-Route::name('vessels.')->controller(VesselController::class)->prefix('vessels')->group(function () {
+Route::name('vessels.')->controller(VesselController::class)->prefix('api/v1/vessels')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('create');
     Route::get('/{vessel}', 'show')->name('show');
