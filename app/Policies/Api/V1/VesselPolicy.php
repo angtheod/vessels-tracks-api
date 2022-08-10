@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Policies;
+namespace App\Policies\Api\V1;
 
-use App\Models\Vessel;
+use App\Models\Api\V1\Vessel;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -13,7 +13,7 @@ class VesselPolicy
     /**
      * Determine whether the user can view any vessel.
      *
-     * @param  \App\Models\User  $user
+     * @param  User  $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -24,8 +24,8 @@ class VesselPolicy
     /**
      * Determine whether the user can view the vessel.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Vessel  $vessel
+     * @param  User  $user
+     * @param  Vessel  $vessel
      * @return mixed
      */
     public function view(User $user, Vessel $vessel)
@@ -36,7 +36,7 @@ class VesselPolicy
     /**
      * Determine whether the user can create vessel.
      *
-     * @param  \App\Models\User  $user
+     * @param  User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -47,8 +47,8 @@ class VesselPolicy
     /**
      * Determine whether the user can update the vessel.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Vessel  $vessel
+     * @param  User  $user
+     * @param  Vessel  $vessel
      * @return mixed
      */
     public function update(User $user, Vessel $vessel)
@@ -59,8 +59,8 @@ class VesselPolicy
     /**
      * Determine whether the user can delete the vessel.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Vessel  $vessel
+     * @param  User  $user
+     * @param  Vessel  $vessel
      * @return mixed
      */
     public function delete(User $user, Vessel $vessel)
@@ -71,8 +71,8 @@ class VesselPolicy
     /**
      * Determine whether the user can restore the vessel.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Vessel  $vessel
+     * @param  User  $user
+     * @param  Vessel  $vessel
      * @return mixed
      */
     public function restore(User $user, Vessel $vessel)
@@ -83,8 +83,8 @@ class VesselPolicy
     /**
      * Determine whether the user can permanently delete the vessel.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Vessel  $vessel
+     * @param  User  $user
+     * @param  Vessel  $vessel
      * @return mixed
      */
     public function forceDelete(User $user, Vessel $vessel)

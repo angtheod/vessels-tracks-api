@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TrackResource extends JsonResource
+class PositionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

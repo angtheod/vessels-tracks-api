@@ -2,24 +2,24 @@
 
 namespace Database\Factories\Api\V1;
 
-use App\Models\Api\V1\Vessel;
+use App\Models\Api\V1\Position;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class VesselFactory extends Factory
+class PositionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Vessel::class;
+    protected $model = Position::class;
 
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [];
     }

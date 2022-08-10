@@ -1,5 +1,5 @@
 {
-    "name": "assignment/angelos",
+    "name": "angelos/vessels-tracks-api",
     "description": "RESTful API for Vessels Tracks",
     "authors": [
         {
@@ -7,6 +7,7 @@
             "email": "angtheod@gmail.com"
         }
     ],
+    "version": "1.0.0",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -43,9 +44,14 @@
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@sed -ir \"s/^[#]*\\s*APP_KEY=.*/APP_KEY=$(php -r \"require 'vendor/autoload.php'; echo \\Illuminate\\Support\\Str::random(32).PHP_EOL;\")/\" .env",
-            "@php -S api:8080 -t public"
+            "@php --version",
+            "@php artisan --version",
+            "@php -r \"require_once './vendor/autoload.php'; echo \\Composer\\InstalledVersions::getVersion('angelos/vessels-tracks-api').PHP_EOL;\""
+        ],
+        "post-update-cmd": [
+            "@php --version",
+            "@php artisan --version",
+            "@php -r \"require_once './vendor/autoload.php'; echo \\Composer\\InstalledVersions::getVersion('angelos/vessels-tracks-api').PHP_EOL;\""
         ]
     }
 }

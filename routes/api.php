@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\V1\TrackController;
+use App\Http\Controllers\Api\V1\PositionController;
 use App\Http\Controllers\Api\V1\VesselController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::apiResource('tracks', TrackController::class);
+//Route::apiResource('positions', PositionController::class);
 //Route::apiResource('vessels', VesselController::class);
 
 /*
 |--------------------------------------------------------------------------
-| Track endpoints
+| Position endpoints
 |--------------------------------------------------------------------------
  */
-Route::name('tracks.')->controller(TrackController::class)->prefix('api/v1/tracks')->group(function () {
+Route::name('positions.')->controller(PositionController::class)->prefix('api/v1/positions')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('create');
-    Route::get('/{track}', 'show')->name('show');
-    Route::put('/{track}', 'update')->name('update');
-    Route::delete('/{track}', 'destroy')->name('destroy');
+    Route::get('/{position}', 'show')->name('show');
+    Route::put('/{position}', 'update')->name('update');
+    Route::delete('/{position}', 'destroy')->name('destroy');
 });
 
 /*

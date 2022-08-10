@@ -13,23 +13,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tracks', function (Blueprint $table) {
+        Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mmsi')->unsigned()->unique();
+            $table->unsignedBigInteger('mmsi');
             $table->tinyInteger('status');
             $table->unsignedInteger('stationId');
             $table->unsignedSmallInteger('speed');
-            $table->unsignedFloat('lon');
-            $table->unsignedFloat('lat');
+            $table->unsignedFloat('lon', 8, 5);
+            $table->unsignedFloat('lat', 8, 5);
             $table->integer('course');
             $table->integer('heading');
             $table->string('rot')->nullable();
             $table->unsignedInteger('timestamp');
-            $table->timestamps();
         });
 
-        Schema::table('tracks', function (Blueprint $table) {
-            $table->foreign('mmsi')->references('id')->on('vessels')->cascadeOnDelete();
+        Schema::table('positions', function (Blueprint $table) {
+            $table->foreign('mmsi')->references('mmsi')->on('vessels')->cascadeOnDelete();
         });
     }
 
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tracks');
+        Schema::dropIfExists('positions');
     }
 };

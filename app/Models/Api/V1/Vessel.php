@@ -14,9 +14,7 @@ class Vessel extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name'
-    ];
+    protected $fillable = [];
     protected $guarded = [];
     protected $hidden = ['id'];
     protected $table = 'vessels';

@@ -5,7 +5,7 @@ namespace App\Models\Api\V1;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Track extends Model
+class Position extends Model
 {
     use HasFactory;
 
@@ -15,11 +15,20 @@ class Track extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'mmsi',
+        'status',
+        'stationId',
+        'speed',
+        'lon',
+        'lat',
+        'course',
+        'heading',
+        'rot',
+        'timestamp'
     ];
     protected $guarded = [];
     protected $hidden = ['id'];
-    protected $table = 'tracks';
+    protected $table = 'positions';
     public $timestamps = true;
 
 }

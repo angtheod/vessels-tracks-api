@@ -24,7 +24,7 @@ class VesselRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
+            'mmsi' => ['required'],
         ];
     }
 }

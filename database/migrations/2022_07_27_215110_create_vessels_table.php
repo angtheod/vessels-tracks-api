@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('vessels', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('mmsi')->unique();
             $table->timestamps();
         });
     }

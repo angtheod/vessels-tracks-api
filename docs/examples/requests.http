@@ -1,0 +1,11 @@
+
+GET http://localhost:8081/api/v1/positions
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{
+}
+### > {% client.global.set("auth_token", response.body.jwt); %}
+
+###

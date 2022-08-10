@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Api\V1\PositionsTableSeeder;
+use Database\Seeders\Api\V1\VesselsTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            TracksTableSeeder::class,
             VesselsTableSeeder::class,
+            PositionsTableSeeder::class,
         ]);
     }
 }

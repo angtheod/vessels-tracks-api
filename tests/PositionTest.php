@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-class TrackTest extends TestCase
+class PositionTest extends TestCase
 {
     /**
-     * A Track unit test.
+     * A Position unit test.
      *
      * @return void
      */

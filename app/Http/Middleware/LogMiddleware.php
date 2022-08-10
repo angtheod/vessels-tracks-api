@@ -19,11 +19,11 @@ class LogMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $request::create();
         Log::info('Incoming request:');
         Log::info($request);
         return $next($request);
     }
+
     public function terminate(Request $request, Response $response)
     {
         Log::info('Outgoing response:');
