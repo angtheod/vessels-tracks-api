@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Api\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Laravel\Lumen\Http\Request;
 
-class PositionRequest extends FormRequest
+class PositionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,7 +21,7 @@ class PositionRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'mmsi' => 'required|numeric',

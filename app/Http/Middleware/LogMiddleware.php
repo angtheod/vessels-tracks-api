@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
 class LogMiddleware
@@ -20,11 +19,17 @@ class LogMiddleware
     public function handle(Request $request, Closure $next)
     {
         Log::info('Incoming request:');
-        Log::info($request);
+        Log::info($request->getMethod() . ' ' . $request->getUri());
         return $next($request);
     }
 
-    public function terminate(Request $request, Response $response)
+    /**
+     * @param Request  $request
+     * @param $response
+     *
+     * @return void
+     */
+    public function terminate(Request $request, $response): void
     {
         Log::info('Outgoing response:');
         Log::info($response);

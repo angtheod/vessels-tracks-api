@@ -12,17 +12,17 @@ class VesselController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * GET /vessels/{id}
+     * GET /vessels
      *
      * @return VesselCollection
      */
-    public function index()
+    public function index(): VesselCollection
     {
-        $this->authorize('viewAny', Vessel::class);
+        //$this->authorize('viewAny', Vessel::class);
 
-        $vessel = Vessel::all();
+        $vessels = Vessel::all();
 
-        return new VesselCollection($vessel);
+        return new VesselCollection($vessels);
 
     }
 
@@ -33,11 +33,11 @@ class VesselController extends Controller
      * @param  VesselRequest  $request
      * @return VesselResource
      */
-    public function store(VesselRequest $request)
+    public function store(VesselRequest $request): VesselResource
     {
-        $this->authorize('create', Vessel::class);
+        //$this->authorize('create', Vessel::class);
 
-        $vessel = Vessel::create($request->validated());
+        $vessel = Vessel::query()->create(json_decode($request->getContent(), true));
 
         return new VesselResource($vessel);
 
@@ -47,12 +47,14 @@ class VesselController extends Controller
      * Display the specified resource.
      * GET /vessels/{id}
      *
-     * @param  Vessel  $vessel
+     * @param  int $id
      * @return VesselResource
      */
-    public function show(Vessel $vessel)
+    public function show(int $id): VesselResource
     {
-        $this->authorize('view', $vessel);
+        //$this->authorize('view', Vessel::class);
+
+        $vessel = Vessel::query()->findOrFail($id);
 
         return new VesselResource($vessel);
 
@@ -62,15 +64,18 @@ class VesselController extends Controller
      * Update the specified resource in storage.
      * PUT /vessels/{id}
      *
-     * @param  VesselRequest  $request
-     * @param  Vessel  $vessel
+     * @param VesselRequest $request
+     * @param int           $id
+     *
      * @return VesselResource
+     * @throws \Throwable
      */
-    public function update(VesselRequest $request, Vessel $vessel)
+    public function update(VesselRequest $request, int $id): VesselResource
     {
-        $this->authorize('update', $vessel);
+        //$this->authorize('update', Vessel::class);
 
-        $vessel->update($request->validated());
+        $vessel = Vessel::query()->findOrFail($id);
+        $vessel->updateOrFail(json_decode($request->getContent(), true));
 
         return new VesselResource($vessel);
 
@@ -80,16 +85,15 @@ class VesselController extends Controller
      * Remove the specified resource from storage.
      * DELETE /vessels/{id}
      *
-     * @param  Vessel  $vessel
+     * @param int $id
+     *
      * @return null
+     * @throws \Throwable
      */
-    public function destroy(Vessel $vessel)
+    public function destroy(int $id)
     {
-        $this->authorize('delete', $vessel);
+        //$this->authorize('delete', Vessel::class);
 
-        $vessel->delete();
-
-        return null;
-
+        return response()->json(['status' => Vessel::query()->findOrFail($id)->deleteOrFail() ? 'success' : 'failure']);
     }
 }

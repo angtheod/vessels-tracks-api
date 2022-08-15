@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\V1\PositionController;
 use App\Http\Controllers\Api\V1\VesselController;
 use Illuminate\Support\Facades\Route;
 
+/** @var \Laravel\Lumen\Routing\Router $router */
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,20 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::apiResource('positions', PositionController::class);
-//Route::apiResource('vessels', VesselController::class);
-
 /*
 |--------------------------------------------------------------------------
 | Position endpoints
 |--------------------------------------------------------------------------
  */
-Route::name('positions.')->controller(PositionController::class)->prefix('api/v1/positions')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::post('/', 'store')->name('create');
-    Route::get('/{position}', 'show')->name('show');
-    Route::put('/{position}', 'update')->name('update');
-    Route::delete('/{position}', 'destroy')->name('destroy');
+$router->group([], function () use ($router) {
+    $router->get('positions', ['as' => 'positions.index', 'uses' => 'PositionController@index']);
+    $router->post('positions', ['as' => 'positions.create', 'uses' => 'PositionController@store']);
+    $router->get('positions/{id}', ['as' => 'positions.show', 'uses' => 'PositionController@show']);
+    $router->put('positions/{id}', ['as' => 'positions.update', 'uses' => 'PositionController@update']);
+    $router->delete('positions/{id}', ['as' => 'positions.delete', 'uses' => 'PositionController@destroy']);
 });
 
 /*
@@ -36,10 +35,10 @@ Route::name('positions.')->controller(PositionController::class)->prefix('api/v1
 | Vessel endpoints
 |--------------------------------------------------------------------------
  */
-Route::name('vessels.')->controller(VesselController::class)->prefix('api/v1/vessels')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::post('/', 'store')->name('create');
-    Route::get('/{vessel}', 'show')->name('show');
-    Route::put('/{vessel}', 'update')->name('update');
-    Route::delete('/{vessel}', 'destroy')->name('destroy');
+$router->group([], function () use ($router) {
+    $router->get('vessels', ['as' => 'vessels.index', 'uses' => 'VesselController@index']);
+    $router->post('vessels', ['as' => 'vessels.create', 'uses' => 'VesselController@store']);
+    $router->get('vessels/{id}', ['as' => 'vessels.show', 'uses' => 'VesselController@show']);
+    $router->put('vessels/{id}', ['as' => 'vessels.update', 'uses' => 'VesselController@update']);
+    $router->delete('vessels/{id}', ['as' => 'vessels.delete', 'uses' => 'VesselController@destroy']);
 });

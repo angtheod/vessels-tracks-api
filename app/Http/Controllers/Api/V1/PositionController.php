@@ -12,18 +12,17 @@ class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * GET /positions/{id}
+     * GET /positions
      *
      * @return PositionCollection
      */
-    public function index()
+    public function index(): PositionCollection
     {
-        $this->authorize('viewAny', Position::class);
+        //$this->authorize('viewAny', Position::class);
 
         $positions = Position::all();
 
         return new PositionCollection($positions);
-
     }
 
     /**
@@ -33,11 +32,12 @@ class PositionController extends Controller
      * @param  PositionRequest  $request
      * @return PositionResource
      */
-    public function store(PositionRequest $request)
+    public function store(PositionRequest $request): PositionResource
     {
-        $this->authorize('create', Position::class);
+        //$this->authorize('create', Position::class);
+        //$this->validate($request, $request->rules());
 
-        $position = Position::create($request->validated());
+        $position = Position::query()->create(json_decode($request->getContent(), true));
 
         return new PositionResource($position);
 
@@ -47,12 +47,14 @@ class PositionController extends Controller
      * Display the specified resource.
      * GET /positions/{id}
      *
-     * @param  Position  $position
+     * @param  int $id
      * @return PositionResource
      */
-    public function show(Position $position)
+    public function show(int $id): PositionResource
     {
-        $this->authorize('view', $position);
+        //$this->authorize('view', Position::class);
+
+        $position = Position::query()->findOrFail($id);
 
         return new PositionResource($position);
 
@@ -62,15 +64,18 @@ class PositionController extends Controller
      * Update the specified resource in storage.
      * PUT /positions/{id}
      *
-     * @param  PositionRequest  $request
-     * @param  Position  $position
+     * @param PositionRequest $request
+     * @param int             $id
+     *
      * @return PositionResource
+     * @throws \Throwable
      */
-    public function update(PositionRequest $request, Position $position)
+    public function update(PositionRequest $request, int $id): PositionResource
     {
-        $this->authorize('update', $position);
+        //$this->authorize('update', Position::class);
 
-        $position->update($request->validated());
+        $position = Position::query()->findOrFail($id);
+        $position->updateOrFail(json_decode($request->getContent(), true));
 
         return new PositionResource($position);
 
@@ -80,16 +85,15 @@ class PositionController extends Controller
      * Remove the specified resource from storage.
      * DELETE /positions/{id}
      *
-     * @param  Position  $position
+     * @param int $id
+     *
      * @return null
+     * @throws \Throwable
      */
-    public function destroy(Position $position)
+    public function destroy(int $id)
     {
-        $this->authorize('delete', $position);
+        //$this->authorize('delete', Position::class);
 
-        $position->delete();
-
-        return null;
-
+        return response()->json(['status' => Position::query()->findOrFail($id)->deleteOrFail() ? 'success' : 'failure']);
     }
 }

@@ -9,3 +9,54 @@ Content-Type: application/json; charset=UTF-8
 ### > {% client.global.set("auth_token", response.body.jwt); %}
 
 ###
+
+POST http://localhost:8081/api/v1/positions
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{
+  "mmsi": 311040700,
+  "status": 1,
+  "stationId": 3398,
+  "speed": 160,
+  "lon": 32.37743,
+  "lat": 35.83893,
+  "course": 280,
+  "heading": 280,
+  "rot": "",
+  "timestamp": 1372700640
+}
+
+###
+
+GET http://localhost:8081/api/v1/positions/2697
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{
+}
+
+###
+
+PUT http://localhost:8081/api/v1/positions/2697
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{
+    "speed": 157,
+    "course": 286,
+    "heading": 286
+}
+
+###
+
+DELETE http://localhost:8081/api/v1/positions/2699
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{
+}

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Api\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Laravel\Lumen\Http\Request;
 
-class VesselRequest extends FormRequest
+class VesselRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

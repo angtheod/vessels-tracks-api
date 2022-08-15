@@ -29,6 +29,6 @@ class Position extends Model
     protected $guarded = [];
     protected $hidden = ['id'];
     protected $table = 'positions';
-    public $timestamps = true;
+    public $timestamps = false;
 
 }
