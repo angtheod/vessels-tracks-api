@@ -11,7 +11,7 @@ class PositionRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -32,7 +32,58 @@ class PositionRequest extends Request
             'lat' => 'required|numeric|between:-90,90',
             'course' => 'required|numeric',
             'heading' => 'required|numeric',
+            'rot' => 'numeric',
             'timestamp' => 'required|numeric',
         ];
+    }
+
+    public function getVesselId()
+    {
+        return $this->json('mmsi');
+    }
+
+    public function getStatus()
+    {
+        return $this->json('status');
+    }
+
+    public function getStationId()
+    {
+        return $this->json('stationId');
+    }
+
+    public function getSpeed()
+    {
+        return $this->json('speed');
+    }
+
+    public function getLongitude()
+    {
+        return $this->json('lon');
+    }
+
+    public function getLatitude()
+    {
+        return $this->json('lan');
+    }
+
+    public function getCourse()
+    {
+        return $this->json('course');
+    }
+
+    public function getHeading()
+    {
+        return $this->json('heading');
+    }
+
+    public function getRateOfTurn()
+    {
+        return $this->json('rot');
+    }
+
+    public function getTimestamp()
+    {
+        return $this->json('timestamp');
     }
 }

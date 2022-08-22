@@ -11,7 +11,7 @@ class VesselRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,10 +21,15 @@ class VesselRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'mmsi' => ['required'],
         ];
+    }
+
+    public function getId()
+    {
+        return $this->json('mmsi');
     }
 }

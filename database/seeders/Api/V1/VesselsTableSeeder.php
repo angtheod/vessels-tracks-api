@@ -15,7 +15,7 @@ class VesselsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::statement('set FOREIGN_KEY_CHECKS = 0');
         Vessel::query()->truncate();

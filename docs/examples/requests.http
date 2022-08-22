@@ -18,10 +18,10 @@ Content-Type: application/json; charset=UTF-8
 {
   "mmsi": 311040700,
   "status": 1,
-  "stationId": 3398,
-  "speed": 160,
-  "lon": 32.37743,
-  "lat": 35.83893,
+  "stationId": 3399,
+  "speed": 170,
+  "lon": 33.37743,
+  "lat": 34.83893,
   "course": 280,
   "heading": 280,
   "rot": "",
@@ -40,20 +40,30 @@ Content-Type: application/json; charset=UTF-8
 
 ###
 
-PUT http://localhost:8081/api/v1/positions/2697
+PUT http://localhost:8081/api/v1/positions/2697?param1=value1&param2=value2
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json; charset=UTF-8
 
 {
-    "speed": 157,
+    "speed": 158,
     "course": 286,
     "heading": 286
 }
 
 ###
 
-DELETE http://localhost:8081/api/v1/positions/2699
+DELETE http://localhost:8081/api/v1/positions/2702
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{
+}
+
+###
+
+GET http://localhost:8081/api/v1/vessels/1/positions
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json; charset=UTF-8

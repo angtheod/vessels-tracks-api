@@ -4,6 +4,7 @@ namespace App\Models\Api\V1;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vessel extends Model
 {
@@ -14,9 +15,19 @@ class Vessel extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'mmsi'
+    ];
     protected $guarded = [];
     protected $hidden = ['id'];
     protected $table = 'vessels';
     public $timestamps = true;
+
+    /**
+     * @return HasMany
+     */
+    public function positions(): HasMany
+    {
+        return $this->hasMany(Position::class, 'mmsi', 'mmsi');
+    }
 }

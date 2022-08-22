@@ -41,4 +41,5 @@ $router->group([], function () use ($router) {
     $router->get('vessels/{id}', ['as' => 'vessels.show', 'uses' => 'VesselController@show']);
     $router->put('vessels/{id}', ['as' => 'vessels.update', 'uses' => 'VesselController@update']);
     $router->delete('vessels/{id}', ['as' => 'vessels.delete', 'uses' => 'VesselController@destroy']);
+    $router->get('vessels/{id}/positions', ['as' => 'vessels.show.positions', 'uses' => 'VesselController@showPositions']);
 });

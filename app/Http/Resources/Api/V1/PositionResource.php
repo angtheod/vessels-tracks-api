@@ -14,7 +14,6 @@ class PositionResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
         return [
             'mmsi' => $this->mmsi,
             'status' => $this->status,

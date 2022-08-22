@@ -7,6 +7,7 @@ use App\Http\Resources\Api\V1\PositionResource;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\PositionRequest;
 use App\Http\Resources\Collections\Api\V1\PositionCollection;
+use Illuminate\Http\Response;
 
 class PositionController extends Controller
 {
@@ -29,13 +30,16 @@ class PositionController extends Controller
      * Store a newly created resource in storage.
      * POST /positions
      *
-     * @param  PositionRequest  $request
+     * @param PositionRequest $request
+     *
      * @return PositionResource
      */
     public function store(PositionRequest $request): PositionResource
     {
-        //$this->authorize('create', Position::class);
-        //$this->validate($request, $request->rules());
+        // 1. Authenticate user/ip/etc..
+        // 2. Authorize action $this->authorize('create', Position::class);
+        // 3. Sanitize/Filter input
+        // 4. Validate input data $this->validate($request, $request->rules());
 
         $position = Position::query()->create(json_decode($request->getContent(), true));
 
@@ -94,6 +98,8 @@ class PositionController extends Controller
     {
         //$this->authorize('delete', Position::class);
 
-        return response()->json(['status' => Position::query()->findOrFail($id)->deleteOrFail() ? 'success' : 'failure']);
+        Position::query()->findOrFail($id)->deleteOrFail();
+
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }

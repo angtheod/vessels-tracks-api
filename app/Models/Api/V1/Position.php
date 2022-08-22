@@ -4,6 +4,7 @@ namespace App\Models\Api\V1;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Position extends Model
 {
@@ -31,4 +32,11 @@ class Position extends Model
     protected $table = 'positions';
     public $timestamps = false;
 
+    /**
+     * @return BelongsTo
+     */
+    public function vessel(): BelongsTo
+    {
+        return $this->belongsTo(Vessel::class);
+    }
 }

@@ -74,12 +74,12 @@ $app->configure('app');
 
  $app->middleware([
      App\Http\Middleware\LogMiddleware::class,
-     //'throttle' => App\Http\Middleware\RateLimits::class
  ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+ $app->routeMiddleware([
+     //'auth' => App\Http\Middleware\Authenticate::class,
+     'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+ ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +95,7 @@ $app->configure('app');
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\RouteServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +115,7 @@ $app->router->group([
 });
 
 $app->router->group([
-    //'middleware' => 'api',
+    'middleware' => 'throttle:api_v1',
     'namespace'  => 'App\Http\Controllers\Api\V1',
     'prefix'     => 'api/v1',
 ], function ($router) {
