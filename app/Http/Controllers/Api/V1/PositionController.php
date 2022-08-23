@@ -12,8 +12,16 @@ use Illuminate\Http\Response;
 class PositionController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * GET /positions
+     * @OA\Get (
+     *     tags={"Positions"},
+     *     path="/positions",
+     *     description="Get a Collection of Position resources",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Position")
+     *     )
+     * )
      *
      * @return PositionCollection
      */
@@ -27,8 +35,16 @@ class PositionController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     * POST /positions
+     * @OA\Post (
+     *     tags={"Positions"},
+     *     path="/positions",
+     *     description="Create and save a new resource",
+     *     @OA\Response (
+     *         response="201",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Position")
+     *     )
+     * )
      *
      * @param PositionRequest $request
      *
@@ -48,8 +64,16 @@ class PositionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     * GET /positions/{id}
+     * @OA\Get (
+     *     tags={"Positions"},
+     *     path="/positions/{id}",
+     *     description="Get a specified resource",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Position")
+     *     )
+     * )
      *
      * @param  int $id
      * @return PositionResource
@@ -65,8 +89,16 @@ class PositionController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     * PUT /positions/{id}
+     * @OA\Put (
+     *     tags={"Positions"},
+     *     path="/positions/{id}",
+     *     description="Update the specified resource in storage",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Position")
+     *     )
+     * )
      *
      * @param PositionRequest $request
      * @param int             $id
@@ -86,8 +118,16 @@ class PositionController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     * DELETE /positions/{id}
+     * @OA\Delete (
+     *     tags={"Positions"},
+     *     path="/positions/{id}",
+     *     description="Remove the specified resource from storage",
+     *     @OA\Response (
+     *         response="204",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Position")
+     *     )
+     * )
      *
      * @param int $id
      *

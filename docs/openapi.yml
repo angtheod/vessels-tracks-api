@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: 'Vessel Tracks API'
+  description: 'API endpoints for Vessel Tracks API'
+  contact:
+    name: 'Angelos Theodorakopoulos'
+    email: angtheod@gmail.com
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8081/api/v1'
+    description: 'API V1 server'
+paths:
+  /positions:
+    get:
+      tags:
+        - Positions
+      description: 'Get a Collection of Position resources'
+      operationId: 6cdac0393ec8f9b1190140f57ee0d552
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+    post:
+      tags:
+        - Positions
+      description: 'Create and save a new resource'
+      operationId: 0b52cab7c1e856a9875a1e98e376a27b
+      responses:
+        '201':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+  '/positions/{id}':
+    get:
+      tags:
+        - Positions
+      description: 'Get a specified resource'
+      operationId: 70fbc614f4c75db2340f5d9c7b43f3b7
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+    put:
+      tags:
+        - Positions
+      description: 'Update the specified resource in storage'
+      operationId: a2183f97f415091fe864068eca0fd952
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+    delete:
+      tags:
+        - Positions
+      description: 'Remove the specified resource from storage'
+      operationId: 0ffe2a9878e6ee383c1a6ae7206628a6
+      responses:
+        '204':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+  /vessels:
+    get:
+      tags:
+        - Vessels
+      description: 'Get a Collection of Vessel resources'
+      operationId: a6d66f867b1fb2ed70574965e79eebca
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vessel'
+    post:
+      tags:
+        - Vessels
+      description: 'Create and save a new resource'
+      operationId: f57ad74885870cafb0656a15e54ce9d9
+      responses:
+        '201':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vessel'
+  '/vessels/{id}':
+    get:
+      tags:
+        - Vessels
+      description: 'Get the specified resource'
+      operationId: dd9e7790ffb71596b5dea9dc122862b6
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vessel'
+    put:
+      tags:
+        - Vessels
+      description: 'Update the specified resource in storage'
+      operationId: a9c82142d8d54ca181b208b192df3cd2
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vessel'
+    delete:
+      tags:
+        - Vessels
+      description: 'Remove the specified resource from storage'
+      operationId: 7d4afbaf41d0f385f3e7278615eee61d
+      responses:
+        '204':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vessel'
+  '/vessels/{id}/positions':
+    get:
+      tags:
+        - Vessels
+      description: 'Get all positions of specified vessel'
+      operationId: f6fe69ba866c2cbc7d9be54b3b95382e
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+components:
+  schemas:
+    Position:
+      properties:
+        fillable:
+          description: 'The attributes that are mass assignable.'
+          type: array
+          items:
+            properties:
+              mmsi:
+                type: integer
+              status:
+                type: integer
+              stationId:
+                type: integer
+              speed:
+                type: integer
+              lon:
+                type: number
+                format: float
+              lat:
+                type: number
+                format: float
+              course:
+                type: integer
+              heading:
+                type: integer
+              rot:
+                type: string
+              timestamp:
+                type: integer
+            type: object
+      type: object
+    Vessel:
+      properties:
+        fillable:
+          type: array
+          items:
+            properties:
+              mmsi:
+                description: 'The attributes that are mass assignable.'
+                type: integer
+            type: object
+      type: object

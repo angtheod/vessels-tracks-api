@@ -7,6 +7,7 @@ use App\Models\Api\V1\ApiLogResponse;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class LogMiddleware
 {
@@ -47,10 +48,9 @@ class LogMiddleware
         // DB Logging
         ApiLogResponse::query()->create([
             'request_id' => self::$LAST_INSERTED_ID,
-            'method' => $request->getMethod(),
-            'content' => $response->getContent(),   // TODO - truncate content length
-            'error_code' => $response->status(),
-            'error_message' => $response->statusText(),
+            'content' => Str::limit($response->getContent(), 10000),
+            'status_code' => $response->status(),
+            'status_message' => $response->statusText(),
         ]);
 
         // Fs logging

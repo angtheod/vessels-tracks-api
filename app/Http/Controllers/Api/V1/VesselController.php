@@ -13,8 +13,16 @@ use Illuminate\Http\Response;
 class VesselController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * GET /vessels
+     * @OA\Get (
+     *     tags={"Vessels"},
+     *     path="/vessels",
+     *     description="Get a Collection of Vessel resources",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Vessel")
+     *     )
+     * )
      *
      * @return VesselCollection
      */
@@ -28,10 +36,19 @@ class VesselController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     * POST /vessels
+     * @OA\Post (
+     *     tags={"Vessels"},
+     *     path="/vessels",
+     *     description="Create and save a new resource",
+     *     @OA\Response (
+     *         response="201",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Vessel")
+     *     )
+     * )
      *
      * @param  VesselRequest  $request
+     *
      * @return VesselResource
      */
     public function store(VesselRequest $request): VesselResource
@@ -47,10 +64,19 @@ class VesselController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     * GET /vessels/{id}
+     * @OA\Get (
+     *     tags={"Vessels"},
+     *     path="/vessels/{id}",
+     *     description="Get the specified resource",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Vessel")
+     *     )
+     * )
      *
      * @param  int $id
+     *
      * @return VesselResource
      */
     public function show(int $id): VesselResource
@@ -63,10 +89,19 @@ class VesselController extends Controller
     }
 
     /**
-     * Display all positions of requested vessel
-     * GET /vessels/{id}/positions
+     * @OA\Get (
+     *     tags={"Vessels"},
+     *     path="/vessels/{id}/positions",
+     *     description="Get all positions of specified vessel",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Position")
+     *     )
+     * )
      *
      * @param  int $id
+     *
      * @return PositionCollection
      */
     public function showPositions(int $id): PositionCollection
@@ -79,8 +114,16 @@ class VesselController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     * PUT /vessels/{id}
+     * @OA\Put (
+     *     tags={"Vessels"},
+     *     path="/vessels/{id}",
+     *     description="Update the specified resource in storage",
+     *     @OA\Response (
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Vessel")
+     *     )
+     * )
      *
      * @param VesselRequest $request
      * @param int           $id
@@ -99,8 +142,16 @@ class VesselController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     * DELETE /vessels/{id}
+     * @OA\Delete (
+     *     tags={"Vessels"},
+     *     path="/vessels/{id}",
+     *     description="Remove the specified resource from storage",
+     *     @OA\Response (
+     *         response="204",
+     *         description="successful operation",
+     *         @OA\JsonContent (ref="#/components/schemas/Vessel")
+     *     )
+     * )
      *
      * @param int $id
      *

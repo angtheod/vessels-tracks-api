@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('api_log_responses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('request_id')->unsigned()->unique();
-            $table->string('method');
             $table->text('content');
-            $table->unsignedSmallInteger('error_code')->nullable();
-            $table->text('error_message')->nullable();
+            $table->unsignedSmallInteger('status_code')->nullable();
+            $table->text('status_message')->nullable();
             $table->timestamps();
         });
 

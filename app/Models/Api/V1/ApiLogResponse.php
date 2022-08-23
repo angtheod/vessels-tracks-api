@@ -13,10 +13,9 @@ class ApiLogResponse extends Model
      */
     protected $fillable = [
         'request_id',
-        'method',
         'content',
-        'error_code',
-        'error_message',
+        'status_code',
+        'status_message',
         'created_at',
         'updated_at'
     ];
